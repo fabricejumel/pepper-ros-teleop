@@ -1,16 +1,23 @@
+<!--
+  Driver for the PS3
+-->
 <launch>
 
-p
-  <node pkg="pepper_teleop" type="pepper_teleop_joy" name="pepper_teleop_joystick">
+  <node pkg="pepper_teleop" type="pepper_teleop" name="pepper_teleop_joystick">
     <param name="scale_angular" value="1"/>
     <param name="scale_linear" value="0.35"/>
     <param name="axis_deadman" value="7"/>
+    <param name="toogle_head_button value="6"/>
     <param name="axis_linear" value="1"/>
-    <param name="axis_linear_y" value="3"/>
+    <param name="axis_linear_y" value="4"/>
     <param name="axis_angular" value="0"/>
+    <param name="axis_head_yaw" value="2"/>
+    <param name="axis_head_pitch" value="3"/>
+    <param name="head_speed_factor" value="0.1"/>;
     <remap from="pepper_teleop_joystick/cmd_vel" to="cmd_vel"/>
+    <remap from="pepper_teleop_joystick/pose/joint_angles" to="/pepper_robot/pose/joint_angles"/>
   </node>
 
-  <node pkg="joy" type="joy_node" name="joystick"/>
+  <node pkg="joy" type="joy_node" name="joystick" />
 
 </launch>

@@ -44,11 +44,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+## add_message_files( ##FJ
+##   FILES            ##FJ
+##   JointAngleWithspeed.msg ##FJ
+## )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -65,9 +64,9 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
+ #generate_messages(
+ #  DEPENDENCIES
+ #  naoqi_bridge_msgs
 # )
 
 ################################################
@@ -100,6 +99,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
+#   CATKIN_DEPENDS message_runtime #FJ
 #  INCLUDE_DIRS include
 #  LIBRARIES pepper_teleop
 #  CATKIN_DEPENDS joy roscpp rospy std_msgs
@@ -131,6 +131,7 @@ include_directories(
 # add_executable(pepper_teleop_node src/pepper_teleop_node.cpp)
 add_executable(pepper_teleop src/pepper_joy.cpp)
 target_link_libraries(pepper_teleop ${catkin_LIBRARIES})
+#add_dependencies(pepper_teleop 	${catkin_EXPORTED_TARGETS}) ##FJ
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
